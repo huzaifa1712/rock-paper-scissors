@@ -3,6 +3,13 @@
 // Use a function that returns a random choice from an Array of items instead for better extensibility
 const options = ['Rock', 'Paper', 'Scissors'];
 
+// object where key = choice, value = who the key beats. any other value is either tie or loss
+const beatMap = {
+    'rock':'scissors',
+    'paper': 'rock',
+    'scissors':'paper'
+};
+
 function randomChoice(array){
    return array[Math.floor(Math.random()*array.length)];
 }
@@ -10,6 +17,43 @@ function randomChoice(array){
 function computerPlay(options=['Rock', 'Paper', 'Scissors']){
     return randomChoice(options);
 }
+
+// playRound function
+// input: playerSelection, computerSelection as String
+    // must be case insensitive - rOck = Rock
+// output: String indicating win/loss for player
+// Extra: use boolean to indicate which player's perspective - true means use first param, false means use second
+
+// Look at playerS and computerS 
+// if playerS beats computerS, return a win message
+// else, return a lose message
+
+// beat: function that takes playerS, computerS -> return 'win' if playerS beats computerS, else 'lose' (first > second)
+// return 'tie' if te. using beatMap to get winner over playerSelection
+
+function firstBeatsSecond(playerSelection, computerSelection, beatMap){
+    playerSelection = playerSelection.toLowerCase();
+    computerSelection = computerSelection.toLowerCase();
+
+    if(beatMap[playerSelection] == computerSelection){
+        return 'win';
+    }
+
+    else if(playerSelection == computerSelection){
+        return 'tie';
+    }
+
+    return 'lose';
+
+
+}
+
+function playRound(playerSelection, computerSelection, beatMap = beatMap){
+    const result = firstBeatsSecond(playerSelection, computerSelection);
+    
+}
+
+
 
 
 
@@ -19,3 +63,18 @@ function computerPlay(options=['Rock', 'Paper', 'Scissors']){
 // for(let i = 0; i < 10; i++){
 //     console.log(computerPlay())
 // }
+
+// firstBeatsSecond
+// let beatsTest= [firstBeatsSecond('Rock', 'Scissors', beatMap), // win 
+// firstBeatsSecond('Rock', 'Paper',beatMap), // lose
+
+// firstBeatsSecond('Paper', 'Rock',beatMap), // win
+// firstBeatsSecond('Paper', 'Scissors',beatMap), // lose
+
+// firstBeatsSecond('ScisSors', 'Paper',beatMap), //win
+// firstBeatsSecond('Scissors', 'Rock',beatMap), // lose
+
+// firstBeatsSecond('papEr', 'PAper',beatMap) // tie 
+// ]
+
+// console.log(beatsTest);
