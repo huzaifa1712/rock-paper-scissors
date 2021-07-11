@@ -50,7 +50,7 @@ function firstBeatsSecond(playerSelection, computerSelection, beatMap){
 function roundMessage(playerSelection, computerSelection, result){
     playerSelection = correctCase(playerSelection);
     computerSelection = correctCase(computerSelection);
-    
+
     if (result == 'win'){
         return `You Win! ${playerSelection} beats ${computerSelection}`;
     }
@@ -71,8 +71,9 @@ function correctCase(selection){
 }
 
 // first: perspective of playerSelection (first var) if true, otherwise from perspective of computerSelection (secondVar)
-function playRound(playerSelection, computerSelection, bMap = beatMap, first=true){
-    const result = firstBeatsSecond(playerSelection, computerSelection, bMap);
+function playRound(playerSelection, computerSelection, first=true, bMap = beatMap){
+    // switch the args if first = false so from perspective of second player
+    const result = first ? firstBeatsSecond(playerSelection, computerSelection, bMap) : firstBeatsSecond(computerSelection, playerSelection, bMap);
     return first ? roundMessage(playerSelection, computerSelection, result) : roundMessage(computerSelection, playerSelection, result);
 }
 
@@ -103,3 +104,33 @@ firstBeatsSecond('papEr', 'PAper',beatMap) // tie
 // console.log(beatsTest);
 
 // playRound
+let playRoundTest = [
+    playRound("Rock", "Scissors"),
+    playRound("Rock", "Paper"),
+    playRound('Paper', 'Rock'),
+    playRound('Paper', 'Scissors'),
+    playRound('Scissors', 'Paper'),
+    playRound('Scissors', 'Rock'),
+    playRound('Paper', 'Paper')
+
+];
+/*
+Array(7) [ "You Win! Rock beats Scissors", "You Lose! Paper beats Rock ", "You Win! Paper beats Rock", "You Lose! Scissors beats Paper ", 
+"You Win! Scissors beats Paper", "You Lose! Rock beats Scissors ", "You Tie! Paper does not beat Paper" ]
+*/
+
+let playRoundTest2 = [
+    playRound("Rock", "Scissors", false),
+    playRound("Rock", "Paper", false),
+    playRound('Paper', 'Rock', false),
+    playRound('Paper', 'Scissors', false),
+    playRound('Scissors', 'Paper', false),
+    playRound('Scissors', 'Rock', false),
+    playRound('Paper', 'Paper', false)
+
+];
+
+/*
+Array(7) [ "You Lose! Rock beats Scissors ", "You Win! Paper beats Rock", "You Lose! Paper beats Rock ", "You Win! Scissors beats Paper", 
+"You Lose! Scissors beats Paper ", "You Win! Rock beats Scissors", "You Tie! Paper does not beat Paper" ]
+*/
