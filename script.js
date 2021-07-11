@@ -44,13 +44,25 @@ function firstBeatsSecond(playerSelection, computerSelection, beatMap){
     }
 
     return 'lose';
-
-
 }
 
-function playRound(playerSelection, computerSelection, beatMap = beatMap){
-    const result = firstBeatsSecond(playerSelection, computerSelection);
-    
+// helper function for creating template string so switching players is easy
+function roundMessage(playerSelection, computerSelection, result){
+    if (result == 'win'){
+        return `You Win! ${playerSelection} beats ${computerSelection}`;
+    }
+
+    else if (result == 'lose'){
+        return `You Lose! ${computerSelection} beats ${playerSelection} `;
+    }
+
+    return `You Tie! ${playerSelection} does not beat ${computerSelection}`;
+}
+
+// first: perspective of playerSelection (first var) if true, otherwise from perspective of computerSelection (secondVar)
+function playRound(playerSelection, computerSelection, bMap = beatMap, first=true){
+    const result = firstBeatsSecond(playerSelection, computerSelection, bMap);
+    return first ? roundMessage(playerSelection, computerSelection, result) : roundMessage(computerSelection, playerSelection, result);
 }
 
 
@@ -64,17 +76,19 @@ function playRound(playerSelection, computerSelection, beatMap = beatMap){
 //     console.log(computerPlay())
 // }
 
-// firstBeatsSecond
-// let beatsTest= [firstBeatsSecond('Rock', 'Scissors', beatMap), // win 
-// firstBeatsSecond('Rock', 'Paper',beatMap), // lose
+//firstBeatsSecond
+let beatsTest= [firstBeatsSecond('Rock', 'Scissors', beatMap), // win 
+firstBeatsSecond('Rock', 'Paper',beatMap), // lose
 
-// firstBeatsSecond('Paper', 'Rock',beatMap), // win
-// firstBeatsSecond('Paper', 'Scissors',beatMap), // lose
+firstBeatsSecond('Paper', 'Rock',beatMap), // win
+firstBeatsSecond('Paper', 'Scissors',beatMap), // lose
 
-// firstBeatsSecond('ScisSors', 'Paper',beatMap), //win
-// firstBeatsSecond('Scissors', 'Rock',beatMap), // lose
+firstBeatsSecond('ScisSors', 'Paper',beatMap), //win
+firstBeatsSecond('Scissors', 'Rock',beatMap), // lose
 
-// firstBeatsSecond('papEr', 'PAper',beatMap) // tie 
-// ]
+firstBeatsSecond('papEr', 'PAper',beatMap) // tie 
+]
 
 // console.log(beatsTest);
+
+// playRound
