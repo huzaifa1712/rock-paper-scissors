@@ -48,6 +48,9 @@ function firstBeatsSecond(playerSelection, computerSelection, beatMap){
 
 // helper function for creating template string so switching players is easy
 function roundMessage(playerSelection, computerSelection, result){
+    playerSelection = correctCase(playerSelection);
+    computerSelection = correctCase(computerSelection);
+    
     if (result == 'win'){
         return `You Win! ${playerSelection} beats ${computerSelection}`;
     }
@@ -57,6 +60,14 @@ function roundMessage(playerSelection, computerSelection, result){
     }
 
     return `You Tie! ${playerSelection} does not beat ${computerSelection}`;
+}
+
+
+// helper function to correct the case of the selection to first letter capital, rest lower
+function correctCase(selection){
+    selection = selection.toLowerCase();
+    selection = selection[0].toUpperCase() + selection.slice(1);
+    return selection;
 }
 
 // first: perspective of playerSelection (first var) if true, otherwise from perspective of computerSelection (secondVar)
