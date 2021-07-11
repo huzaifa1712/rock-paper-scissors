@@ -14,7 +14,7 @@ function randomChoice(array){
    return array[Math.floor(Math.random()*array.length)];
 }
 
-function computerPlay(options=['Rock', 'Paper', 'Scissors']){
+function computerPlay(optionArr=options){
     return randomChoice(options);
 }
 
@@ -78,7 +78,17 @@ function playRound(playerSelection, computerSelection, first=true, bMap = beatMa
 }
 
 
+function game(rounds){
+    for(let i = 0; i < rounds; i++){
+        let compChoice = computerPlay();
+        let playerChoice = prompt("Give a choice of 'Rock', 'Paper', or 'Scissors'");
 
+        console.log(`Comp chose: ${compChoice}. Player chose: ${playerChoice}`);
+        console.log(playRound(playerChoice, compChoice));
+    }
+}
+
+game(5);
 
 
 // TESTING
@@ -134,3 +144,4 @@ let playRoundTest2 = [
 Array(7) [ "You Lose! Rock beats Scissors ", "You Win! Paper beats Rock", "You Lose! Paper beats Rock ", "You Win! Scissors beats Paper", 
 "You Lose! Scissors beats Paper ", "You Win! Rock beats Scissors", "You Tie! Paper does not beat Paper" ]
 */
+
