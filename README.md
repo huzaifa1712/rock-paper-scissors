@@ -1,2 +1,2 @@
 # rock-paper-scissors
-Rock Paper Scissors game with JS
+The Odin Project - Rock Paper Scissors game with JS
