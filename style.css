@@ -1,6 +1,6 @@
 /*https://coolors.co/d3f6db-92d5e6-772d8b-5a0b4d-a1ef8b*/
 :root{
-    --aero-blue: hsla(134, 66%, 90%, 1);
+    --aero-blue: rgb(212, 241, 219);
     --middle-blue: hsla(192, 63%, 74%, 1);
     --eminence: hsla(287, 51%, 36%, 1);
     --palatinate-purple: hsla(310, 78%, 20%, 1);
@@ -18,4 +18,24 @@ body{
 
 button{
     font-family: inherit;
+    font-size:1.5rem;
+    padding: 0.2rem 4rem;
+}
+
+
+
+main{
+    padding: 2rem;
+    width:50%;
+    margin: 3rem auto;
+    background-color: var(--aero-blue);
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#buttons{
+    width:100%;
+    display:flex;
+    justify-content:space-evenly;
 }
