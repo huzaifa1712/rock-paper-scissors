@@ -2,9 +2,10 @@
 :root{
     --aero-blue: rgb(212, 241, 219);
     --middle-blue: hsla(192, 63%, 74%, 1);
-    --eminence: hsla(287, 51%, 36%, 1);
-    --palatinate-purple: hsla(310, 78%, 20%, 1);
     --light-green: hsla(107, 76%, 74%, 1);
+    --win: green;
+    --loss:rgb(189, 71, 71);
+    --tie: black;
 }
 
 *{
@@ -51,6 +52,7 @@ main{
     display:flex;
     justify-content:center;
     font-size:1.25rem;
+    color:black;
 }
 
 #comp-score{
