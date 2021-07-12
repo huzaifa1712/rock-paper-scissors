@@ -1,3 +1,12 @@
+/*
+Three buttons for Rock, Paper, Scissors
+div for displaying results
+- running score, announce winner once one player reaches <5> points
+- score has playerScore and computerScore/second score
+- p for displaying intermediary results
+- extra p tag at bototm for displaying overall Game Over
+*/
+
 // computerPlay - randomly return either 'Rock', 'Paper' or 'Scissors'
 // input: none. output: string value
 // Use a function that returns a random choice from an Array of items instead for better extensibility
@@ -88,7 +97,6 @@ function game(rounds){
     }
 }
 
-game(5);
 
 
 // TESTING
