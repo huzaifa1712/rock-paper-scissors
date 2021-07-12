@@ -39,3 +39,16 @@ main{
     display:flex;
     justify-content:space-evenly;
 }
+
+#results{
+    width:80%;
+    margin-top:1rem;
+    background-color: aqua;
+}
+
+#scores{
+    display:flex;
+    justify-content:space-around;
+    font-size:1.25rem;
+}
+
