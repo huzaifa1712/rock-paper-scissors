@@ -22,7 +22,7 @@ h1{
     margin-bottom:2rem;
 }
 
-button,#new-game{
+button,#new-game,#start-new-game{
     font-family: inherit;
     font-size:1.5rem;
     padding: 0.2rem 4rem;
@@ -31,9 +31,10 @@ button,#new-game{
     flex-basis:100%;
 }
 
-#new-game{
+#new-game,#start-new-game{
     font-size:1.3rem;
 }
+
 
 button:hover, #new-game:hover{
     transform: scale(1.1);

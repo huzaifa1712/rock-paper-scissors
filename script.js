@@ -128,6 +128,7 @@ const compScoreTag = document.getElementById("comp-score");
 const roundTag = document.getElementById("round");
 const overTag = document.getElementById("over-msg");
 const newGameBtn = document.getElementById("new-game");
+const startNewBtn = document.getElementById("start-new-game");
 
 
 // END DOM REFERENCES //
@@ -217,7 +218,9 @@ function checkGameOver(scores, result){
         toggleVisible(overTag);
 
         buttons.forEach((button)=> button.disabled = true);
-        toggleVisible(newGameBtn);
+
+        // show start new btn
+        toggleVisible(startNewBtn);
     }
 }
 // since buttonClick called in event listener, this is bound to element that called it
@@ -234,7 +237,7 @@ function buttonClick(evt){
 // reset displays, scores etc.
 // basically refresh
 function gameStart(){
-    toggleVisible(buttonDiv, results, roundTag, overTag);
+    toggleVisible(buttonDiv, results, roundTag, overTag, startNewBtn);
 }
 
 function newGame(){
@@ -249,6 +252,8 @@ function newGame(){
 newGameBtn.addEventListener("click", newGame);
 
 buttons.forEach((button) => button.addEventListener("click", buttonClick))
+
+startNewBtn.addEventListener("click", () => location.reload());
 
 
 // need this for correct start with only new game button
