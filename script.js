@@ -83,7 +83,7 @@ function correctCase(selection){
 function playRound(playerSelection, computerSelection, first=true, bMap = beatMap){
     // switch the args if first = false so from perspective of second player
     const result = first ? firstBeatsSecond(playerSelection, computerSelection, bMap) : firstBeatsSecond(computerSelection, playerSelection, bMap);
-    return first ? roundMessage(playerSelection, computerSelection, result) : roundMessage(computerSelection, playerSelection, result);
+    return [first ? roundMessage(playerSelection, computerSelection, result) : roundMessage(computerSelection, playerSelection, result), result];
 }
 
 
@@ -105,6 +105,13 @@ function game(rounds){
 
 // let val = scissorBtn.getAttribute("value");
 // console.log(val);
+
+// press button -> click listener fires, get value from  value attr
+// this is playerSelection -> get choice from computerPlay, pass into playRound
+// output: round message. display in id = round. use firstBeatsSecond to get win/loss/tie, use to increment score.
+// display scores in player/comp score
+// game over when one player reaches <5>. disable buttons, add new button for start new game
+// reset function fires for start new game
 
 
 // TESTING
