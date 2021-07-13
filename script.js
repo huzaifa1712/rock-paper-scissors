@@ -93,7 +93,7 @@ const beatMap = {
         'scissors':'paper'
 };
 
-const scores = {
+let scores = {
     player:0,
     computer:0
 };
@@ -108,9 +108,9 @@ const roundColor= {
 
 // order of update: [player, computer]
 const scoreUpdate = {
-    'win':[1,0],
-    'lose': [0,1],
-    'tie': [0,0]
+    'win': {player:1, computer:0},
+    'lose': {player:0, computer:1},
+    'tie': {player:0, computer: 0}
 }
 
 const winScore = 5;
@@ -175,6 +175,13 @@ function outputRoundMsg(roundMsg, result){
     roundTag.animate(...updateAnimation);
 }
 
+function updateScores(scores, scoreUpdate, result){
+    // update scores object
+    scores.player += scoreUpdate[result].player;
+    scores.computer += scoreUpdate[result].computer;
+
+}
+
 // since buttonClick called in event listener, this is bound to element that called it
 // can just do fn.call(this) to pass this into that function
 function buttonClick(evt){
@@ -182,6 +189,8 @@ function buttonClick(evt){
     const compSelection = computerPlay(options);
     const [roundMsg, result] = playRound(playerSelection, compSelection, beatMap);
     outputRoundMsg(roundMsg, result);
+    updateScores(scores, scoreUpdate, result);
+
 
 }
 
@@ -208,6 +217,7 @@ buttons.forEach((button) => button.addEventListener("click", buttonClick))
 
 // need this for correct start with only new game button
 gameStart();
+
  // after pressing new game run this
 
 // END DOM FUNCTIONS // 
