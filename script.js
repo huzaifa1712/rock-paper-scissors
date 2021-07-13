@@ -134,6 +134,10 @@ function getPlayerSelection(){
     return this.getAttribute("value");
 }
 
+function isVisible(elem){
+    return elem.style.display != "none";
+}
+
 function toggleVisible(...elems){
     elems.forEach((elem) => {
         const current = elem.style.display;
@@ -144,7 +148,12 @@ function toggleVisible(...elems){
 // update roundMsg h3 - text and color set based on result
 // if class = invisible, remove it
 function outputRoundMsg(roundMsg, result){
+    roundTag.innerText = roundMsg;
+    roundTag.style.color = roundColor[result];
 
+    if(!isVisible(roundTag)){
+        toggleVisible(roundTag);
+    }
 }
 
 // since buttonClick called in event listener, this is bound to element that called it
@@ -153,7 +162,7 @@ function buttonClick(evt){
     const playerSelection = getPlayerSelection.call(this);
     const compSelection = computerPlay(options);
     const [roundMsg, result] = playRound(playerSelection, compSelection, beatMap);
-    
+    outputRoundMsg(roundMsg, result);
 
 }
 
