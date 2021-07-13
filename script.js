@@ -175,10 +175,20 @@ function outputRoundMsg(roundMsg, result){
     roundTag.animate(...updateAnimation);
 }
 
+function displayScores(scores){
+    const playerString = `Player Score: ${scores.player}`;
+    const compString = `Computer Score: ${scores.computer}`;
+    playerScoreTag.innerText = playerString;
+    compScoreTag.innerText = compString;
+}
+
 function updateScores(scores, scoreUpdate, result){
     // update scores object
     scores.player += scoreUpdate[result].player;
     scores.computer += scoreUpdate[result].computer;
+
+    // display scores
+    displayScores(scores);
 
 }
 
