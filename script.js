@@ -113,7 +113,7 @@ const scoreUpdate = {
     'tie': {player:0, computer: 0}
 }
 
-const winScore = 2;
+const winScore = 8;
 
 // END SETUP // 
 
@@ -129,6 +129,7 @@ const roundTag = document.getElementById("round");
 const overTag = document.getElementById("over-msg");
 const newGameBtn = document.getElementById("new-game");
 const startNewBtn = document.getElementById("start-new-game");
+const h1 = document.getElementById("title");
 
 
 // END DOM REFERENCES //
@@ -238,6 +239,7 @@ function buttonClick(evt){
 // basically refresh
 function gameStart(){
     toggleVisible(buttonDiv, results, roundTag, overTag, startNewBtn);
+    h1.innerText = `First to get a score of ${winScore} wins!`;
 }
 
 function newGame(){
