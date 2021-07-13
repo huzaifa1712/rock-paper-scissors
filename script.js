@@ -20,6 +20,7 @@ function computerPlay(optionArr){
     return randomChoice(optionArr);
 }
 
+
 // playRound function
 // input: playerSelection, computerSelection as String
     // must be case insensitive - rOck = Rock
@@ -81,16 +82,22 @@ function playRound(playerSelection, computerSelection, bMap, first=true){
 
 
 
+const options = ['Rock', 'Paper', 'Scissors'];
 
-function game(rounds){
-    const options = ['Rock', 'Paper', 'Scissors'];
-
-    // object where key = choice, value = who the key beats. any other value is either tie or loss
-    const beatMap = {
+// object where key = choice, value = who the key beats. any other value is either tie or loss
+const beatMap = {
         'rock':'scissors',
         'paper': 'rock',
         'scissors':'paper'
-    };
+};
+
+const scores = {
+        player:0,
+        computer:0
+};
+
+function game(rounds){
+    
 
     for(let i = 0; i < rounds; i++){
         let compChoice = computerPlay(options);
@@ -171,3 +178,23 @@ function game(rounds){
 Array(7) [ "You Lose! Rock beats Scissors ", "You Win! Paper beats Rock", "You Lose! Paper beats Rock ", "You Win! Scissors beats Paper", 
 "You Lose! Scissors beats Paper ", "You Win! Rock beats Scissors", "You Tie! Paper does not beat Paper" ]
 */
+
+// let a = [2]
+
+// function x(a){
+//     a[0]++;
+// }
+
+// x(a);
+
+// console.log(a);
+// function x(a,b){
+//     return [++a, ++b];
+// }
+
+// function another(){
+//     let a = 2;
+//     let b = 3;
+//     [a,b] = x(a,b);
+//     console.log(a,b);
+// }
