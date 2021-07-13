@@ -106,6 +106,13 @@ const roundColor= {
     'tie': getComputedStyle(document.body).getPropertyValue("--tie")
 }
 
+// order of update: [player, computer]
+const scoreUpdate = {
+    'win':[1,0],
+    'lose': [0,1],
+    'tie': [0,0]
+}
+
 const winScore = 5;
 
 // END SETUP // 
@@ -126,9 +133,18 @@ const newGameBtn = document.getElementById("new-game");
 // END DOM REFERENCES //
 
 
-// DOM MANIPULAITON FUNCTIONS // 
+// DOM MANIPULATION FUNCTIONS // 
 
+const updateAnimation = [
+    [
+        {transform: 'scale(1.2)'},
+        {easing: "ease-in"}
+    ],
 
+    {
+        duration:50
+    }
+]
 
 function getPlayerSelection(){
     return this.getAttribute("value");
@@ -154,6 +170,9 @@ function outputRoundMsg(roundMsg, result){
     if(!isVisible(roundTag)){
         toggleVisible(roundTag);
     }
+    
+    // apply animation with JS to show there was a change
+    roundTag.animate(...updateAnimation);
 }
 
 // since buttonClick called in event listener, this is bound to element that called it
