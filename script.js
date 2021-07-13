@@ -98,10 +98,21 @@ const scores = {
     computer:0
 };
 
+// font color for win/tie/loss
+// getComputedStyle(document.body).getPropertyValue("--win")
+const roundColor= {
+    'win': getComputedStyle(document.body).getPropertyValue("--win"),
+    'lose': getComputedStyle(document.body).getPropertyValue("--loss"),
+    'tie': getComputedStyle(document.body).getPropertyValue("--tie")
+}
+
+const winScore = 5;
+
 // END SETUP // 
 
 
 // DOM REFERENCES // 
+const buttonDiv = document.getElementById("buttons");
 const buttons = document.querySelectorAll("button");
 const results = document.getElementById("results");
 const scoresDiv = document.getElementById("scores");
@@ -116,14 +127,18 @@ const newGameBtn = document.getElementById("new-game");
 
 
 // DOM MANIPULAITON FUNCTIONS // 
+
+
+
 function getPlayerSelection(){
     return this.getAttribute("value");
 }
 
-function toggleVisible(elem){
-    //elem.classList.toggle('invisible');
-    const current = elem.style.display;
-    elem.style.display = current === "" ? "none" : "";
+function toggleVisible(...elems){
+    elems.forEach((elem) => {
+        const current = elem.style.display;
+        elem.style.display = current === "" ? "none" : "";
+    });
 }
 
 // update roundMsg h3 - text and color set based on result
@@ -142,8 +157,30 @@ function buttonClick(evt){
 
 }
 
+// reset displays, scores etc.
+// basically refresh
+function gameStart(){
+    toggleVisible(buttonDiv, results, roundTag, overTag);
+}
+
+function newGame(){
+    toggleVisible(buttonDiv, results);
+    scores.player = 0;
+    scores.computer = 0;
+    playerScoreTag.innerText = "Player Score: 0";
+    compScoreTag.innerText = "Computer Score: 0";
+    toggleVisible(newGameBtn);
+
+}
+
+newGameBtn.addEventListener("click", newGame);
+
 buttons.forEach((button) => button.addEventListener("click", buttonClick))
 
+
+// need this for correct start with only new game button
+gameStart();
+ // after pressing new game run this
 
 // END DOM FUNCTIONS // 
 
