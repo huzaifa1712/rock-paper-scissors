@@ -80,7 +80,7 @@ function correctCase(selection){
 }
 
 // first: perspective of playerSelection (first var) if true, otherwise from perspective of computerSelection (secondVar)
-function playRound(playerSelection, computerSelection, first=true, bMap = beatMap){
+function playRound(playerSelection, computerSelection, bMap, first=true){
     // switch the args if first = false so from perspective of second player
     const result = first ? firstBeatsSecond(playerSelection, computerSelection, bMap) : firstBeatsSecond(computerSelection, playerSelection, bMap);
     return [first ? roundMessage(playerSelection, computerSelection, result) : roundMessage(computerSelection, playerSelection, result), result];
@@ -138,13 +138,13 @@ firstBeatsSecond('papEr', 'PAper',beatMap) // tie
 
 // playRound
 const playRoundTest = [
-    playRound("Rock", "Scissors"),
-    playRound("Rock", "Paper"),
-    playRound('Paper', 'Rock'),
-    playRound('Paper', 'Scissors'),
-    playRound('Scissors', 'Paper'),
-    playRound('Scissors', 'Rock'),
-    playRound('Paper', 'Paper')
+    playRound("Rock", "Scissors", beatMap),
+    playRound("Rock", "Paper", beatMap),
+    playRound('Paper', 'Rock', beatMap),
+    playRound('Paper', 'Scissors', beatMap),
+    playRound('Scissors', 'Paper', beatMap),
+    playRound('Scissors', 'Rock', beatMap),
+    playRound('Paper', 'Paper', beatMap)
 
 ];
 /*
@@ -153,13 +153,13 @@ Array(7) [ "You Win! Rock beats Scissors", "You Lose! Paper beats Rock ", "You W
 */
 
 const playRoundTest2 = [
-    playRound("Rock", "Scissors", false),
-    playRound("Rock", "Paper", false),
-    playRound('Paper', 'Rock', false),
-    playRound('Paper', 'Scissors', false),
-    playRound('Scissors', 'Paper', false),
-    playRound('Scissors', 'Rock', false),
-    playRound('Paper', 'Paper', false)
+    playRound("Rock", "Scissors", beatMap, false),
+    playRound("Rock", "Paper", beatMap, false),
+    playRound('Paper', 'Rock', beatMap, false),
+    playRound('Paper', 'Scissors', beatMap, false),
+    playRound('Scissors', 'Paper', beatMap, false),
+    playRound('Scissors', 'Rock', beatMap, false),
+    playRound('Paper', 'Paper', beatMap, false)
 
 ];
 
