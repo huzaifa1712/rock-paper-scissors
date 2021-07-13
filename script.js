@@ -113,7 +113,18 @@ const scoreUpdate = {
     'tie': {player:0, computer: 0}
 }
 
-const winScore = 8;
+const updateAnimation = [
+    [
+        {transform: 'scale(1.2)'},
+        {easing: "ease-in"}
+    ],
+
+    {
+        duration:50
+    }
+]
+
+const winScore = 5;
 
 // END SETUP // 
 
@@ -137,16 +148,7 @@ const h1 = document.getElementById("title");
 
 // DOM MANIPULATION FUNCTIONS // 
 
-const updateAnimation = [
-    [
-        {transform: 'scale(1.2)'},
-        {easing: "ease-in"}
-    ],
 
-    {
-        duration:50
-    }
-]
 
 function getPlayerSelection(){
     return this.getAttribute("value");
