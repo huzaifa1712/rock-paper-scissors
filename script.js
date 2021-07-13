@@ -12,6 +12,7 @@ div for displaying results
 // Use a function that returns a random choice from an Array of items instead for better extensibility
 
 
+// GAME LOGIC FUNCTIONS //
 function randomChoice(array){
    return array[Math.floor(Math.random()*array.length)];
 }
@@ -19,8 +20,6 @@ function randomChoice(array){
 function computerPlay(optionArr){
     return randomChoice(optionArr);
 }
-
-
 
 // playRound function
 // input: playerSelection, computerSelection as String
@@ -81,8 +80,10 @@ function playRound(playerSelection, computerSelection, bMap, first=true){
     return [first ? roundMessage(playerSelection, computerSelection, result) : roundMessage(computerSelection, playerSelection, result), result];
 }
 
+// END GAME LOGIC FUNCTIONS //
 
 
+// SETUP VARIABLES // 
 const options = ['Rock', 'Paper', 'Scissors'];
 
 // object where key = choice, value = who the key beats. any other value is either tie or loss
@@ -93,38 +94,58 @@ const beatMap = {
 };
 
 const scores = {
-        player:0,
-        computer:0
+    player:0,
+    computer:0
 };
 
-function game(rounds){
-    
-
-    for(let i = 0; i < rounds; i++){
-        let compChoice = computerPlay(options);
-        let playerChoice = prompt("Give a choice of 'Rock', 'Paper', or 'Scissors'");
-
-        console.log(`Comp chose: ${compChoice}. Player chose: ${playerChoice}`);
-        console.log(playRound(playerChoice, compChoice, beatMap));
-    }
-}
+// END SETUP // 
 
 
+// DOM REFERENCES // 
+const buttons = document.querySelectorAll("button");
+const results = document.getElementById("results");
+const scoresDiv = document.getElementById("scores");
+const playerScoreTag = document.getElementById("player-score"); 
+const compScoreTag = document.getElementById("comp-score");
+const roundTag = document.getElementById("round");
+const overTag = document.getElementById("over-msg");
+const newGameBtn = document.getElementById("new-game");
+
+
+// END DOM REFERENCES //
+
+
+// DOM MANIPULAITON FUNCTIONS // 
 function getPlayerSelection(){
     return this.getAttribute("value");
+}
+
+function toggleVisible(elem){
+    //elem.classList.toggle('invisible');
+    const current = elem.style.display;
+    elem.style.display = current === "" ? "none" : "";
+}
+
+// update roundMsg h3 - text and color set based on result
+// if class = invisible, remove it
+function outputRoundMsg(roundMsg, result){
+
 }
 
 // since buttonClick called in event listener, this is bound to element that called it
 // can just do fn.call(this) to pass this into that function
 function buttonClick(evt){
     const playerSelection = getPlayerSelection.call(this);
-    console.log(playerSelection);
+    const compSelection = computerPlay(options);
+    const [roundMsg, result] = playRound(playerSelection, compSelection, beatMap);
+    
+
 }
 
-const buttons = document.querySelectorAll("button");
 buttons.forEach((button) => button.addEventListener("click", buttonClick))
 
 
+// END DOM FUNCTIONS // 
 
 // const rockBtn = document.getElementById("rock");
 // const paperBtn = document.getElementById("paper");
