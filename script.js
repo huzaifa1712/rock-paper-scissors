@@ -99,8 +99,12 @@ function game(rounds){
     }
 }
 
+// const rockBtn = document.getElementById("rock");
+// const paperBtn = document.getElementById("paper");
+// const scissorBtn = document.getElementById("scissors");
 
-
+// let val = scissorBtn.getAttribute("value");
+// console.log(val);
 
 
 // TESTING
