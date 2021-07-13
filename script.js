@@ -113,7 +113,7 @@ const scoreUpdate = {
     'tie': {player:0, computer: 0}
 }
 
-const winScore = 5;
+const winScore = 2;
 
 // END SETUP // 
 
@@ -189,9 +189,37 @@ function updateScores(scores, scoreUpdate, result){
 
     // display scores
     displayScores(scores);
-
 }
 
+// game over: display overMsg - change text depending on res
+    // disable all game buttons
+    // show new game button at bottom
+function checkGameOver(scores, result){
+    if (scores.player === winScore || scores.computer === winScore){
+        let overString = "Game Over! ";
+        const color = roundColor[result];
+
+        switch(result){
+            case 'win':
+                overString += 'Player Wins!';
+                break;
+            case 'lose':
+                overString += 'Computer Wins!';
+                break;
+            case 'tie':
+                overString += "It's a tie!";
+                break;
+        }
+
+        overTag.innerText = overString;
+        overTag.style.color = color;
+
+        toggleVisible(overTag);
+
+        buttons.forEach((button)=> button.disabled = true);
+        toggleVisible(newGameBtn);
+    }
+}
 // since buttonClick called in event listener, this is bound to element that called it
 // can just do fn.call(this) to pass this into that function
 function buttonClick(evt){
@@ -200,8 +228,7 @@ function buttonClick(evt){
     const [roundMsg, result] = playRound(playerSelection, compSelection, beatMap);
     outputRoundMsg(roundMsg, result);
     updateScores(scores, scoreUpdate, result);
-
-
+    checkGameOver(scores, result);
 }
 
 // reset displays, scores etc.
@@ -217,7 +244,6 @@ function newGame(){
     playerScoreTag.innerText = "Player Score: 0";
     compScoreTag.innerText = "Computer Score: 0";
     toggleVisible(newGameBtn);
-
 }
 
 newGameBtn.addEventListener("click", newGame);

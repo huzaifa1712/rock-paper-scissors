@@ -79,6 +79,7 @@ main{
 
 #over-msg{
     color:var(--loss);
+    font-size:2rem;
 }
 .invisible{
     display:none;
