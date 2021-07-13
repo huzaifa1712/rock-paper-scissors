@@ -21,6 +21,7 @@ function computerPlay(optionArr){
 }
 
 
+
 // playRound function
 // input: playerSelection, computerSelection as String
     // must be case insensitive - rOck = Rock
@@ -107,6 +108,21 @@ function game(rounds){
         console.log(playRound(playerChoice, compChoice, beatMap));
     }
 }
+
+
+function getPlayerSelection(){
+    return this.getAttribute("value");
+}
+
+// since buttonClick called in event listener, this is bound to element that called it
+// can just do fn.call(this) to pass this into that function
+function buttonClick(evt){
+    const playerSelection = getPlayerSelection.call(this);
+    console.log(playerSelection);
+}
+
+const buttons = document.querySelectorAll("button");
+buttons.forEach((button) => button.addEventListener("click", buttonClick))
 
 
 
