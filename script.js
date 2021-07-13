@@ -10,21 +10,14 @@ div for displaying results
 // computerPlay - randomly return either 'Rock', 'Paper' or 'Scissors'
 // input: none. output: string value
 // Use a function that returns a random choice from an Array of items instead for better extensibility
-const options = ['Rock', 'Paper', 'Scissors'];
 
-// object where key = choice, value = who the key beats. any other value is either tie or loss
-const beatMap = {
-    'rock':'scissors',
-    'paper': 'rock',
-    'scissors':'paper'
-};
 
 function randomChoice(array){
    return array[Math.floor(Math.random()*array.length)];
 }
 
-function computerPlay(optionArr=options){
-    return randomChoice(options);
+function computerPlay(optionArr){
+    return randomChoice(optionArr);
 }
 
 // playRound function
@@ -90,14 +83,25 @@ function playRound(playerSelection, computerSelection, bMap, first=true){
 
 
 function game(rounds){
+    const options = ['Rock', 'Paper', 'Scissors'];
+
+    // object where key = choice, value = who the key beats. any other value is either tie or loss
+    const beatMap = {
+        'rock':'scissors',
+        'paper': 'rock',
+        'scissors':'paper'
+    };
+
     for(let i = 0; i < rounds; i++){
-        let compChoice = computerPlay();
+        let compChoice = computerPlay(options);
         let playerChoice = prompt("Give a choice of 'Rock', 'Paper', or 'Scissors'");
 
         console.log(`Comp chose: ${compChoice}. Player chose: ${playerChoice}`);
-        console.log(playRound(playerChoice, compChoice));
+        console.log(playRound(playerChoice, compChoice, beatMap));
     }
 }
+
+
 
 // const rockBtn = document.getElementById("rock");
 // const paperBtn = document.getElementById("paper");
@@ -121,47 +125,47 @@ function game(rounds){
 //     console.log(computerPlay())
 // }
 
-//firstBeatsSecond
-const beatsTest= [firstBeatsSecond('Rock', 'Scissors', beatMap), // win 
-firstBeatsSecond('Rock', 'Paper',beatMap), // lose
+// //firstBeatsSecond
+// const beatsTest= [firstBeatsSecond('Rock', 'Scissors', beatMap), // win 
+// firstBeatsSecond('Rock', 'Paper',beatMap), // lose
 
-firstBeatsSecond('Paper', 'Rock',beatMap), // win
-firstBeatsSecond('Paper', 'Scissors',beatMap), // lose
+// firstBeatsSecond('Paper', 'Rock',beatMap), // win
+// firstBeatsSecond('Paper', 'Scissors',beatMap), // lose
 
-firstBeatsSecond('ScisSors', 'Paper',beatMap), //win
-firstBeatsSecond('Scissors', 'Rock',beatMap), // lose
+// firstBeatsSecond('ScisSors', 'Paper',beatMap), //win
+// firstBeatsSecond('Scissors', 'Rock',beatMap), // lose
 
-firstBeatsSecond('papEr', 'PAper',beatMap) // tie 
-]
+// firstBeatsSecond('papEr', 'PAper',beatMap) // tie 
+// ]
 
-// console.log(beatsTest);
+// // console.log(beatsTest);
 
-// playRound
-const playRoundTest = [
-    playRound("Rock", "Scissors", beatMap),
-    playRound("Rock", "Paper", beatMap),
-    playRound('Paper', 'Rock', beatMap),
-    playRound('Paper', 'Scissors', beatMap),
-    playRound('Scissors', 'Paper', beatMap),
-    playRound('Scissors', 'Rock', beatMap),
-    playRound('Paper', 'Paper', beatMap)
+// // playRound
+// const playRoundTest = [
+//     playRound("Rock", "Scissors", beatMap),
+//     playRound("Rock", "Paper", beatMap),
+//     playRound('Paper', 'Rock', beatMap),
+//     playRound('Paper', 'Scissors', beatMap),
+//     playRound('Scissors', 'Paper', beatMap),
+//     playRound('Scissors', 'Rock', beatMap),
+//     playRound('Paper', 'Paper', beatMap)
 
-];
-/*
-Array(7) [ "You Win! Rock beats Scissors", "You Lose! Paper beats Rock ", "You Win! Paper beats Rock", "You Lose! Scissors beats Paper ", 
-"You Win! Scissors beats Paper", "You Lose! Rock beats Scissors ", "You Tie! Paper does not beat Paper" ]
-*/
+// ];
+// /*
+// Array(7) [ "You Win! Rock beats Scissors", "You Lose! Paper beats Rock ", "You Win! Paper beats Rock", "You Lose! Scissors beats Paper ", 
+// "You Win! Scissors beats Paper", "You Lose! Rock beats Scissors ", "You Tie! Paper does not beat Paper" ]
+// */
 
-const playRoundTest2 = [
-    playRound("Rock", "Scissors", beatMap, false),
-    playRound("Rock", "Paper", beatMap, false),
-    playRound('Paper', 'Rock', beatMap, false),
-    playRound('Paper', 'Scissors', beatMap, false),
-    playRound('Scissors', 'Paper', beatMap, false),
-    playRound('Scissors', 'Rock', beatMap, false),
-    playRound('Paper', 'Paper', beatMap, false)
+// const playRoundTest2 = [
+//     playRound("Rock", "Scissors", beatMap, false),
+//     playRound("Rock", "Paper", beatMap, false),
+//     playRound('Paper', 'Rock', beatMap, false),
+//     playRound('Paper', 'Scissors', beatMap, false),
+//     playRound('Scissors', 'Paper', beatMap, false),
+//     playRound('Scissors', 'Rock', beatMap, false),
+//     playRound('Paper', 'Paper', beatMap, false)
 
-];
+// ];
 
 /*
 Array(7) [ "You Lose! Rock beats Scissors ", "You Win! Paper beats Rock", "You Lose! Paper beats Rock ", "You Win! Scissors beats Paper", 
