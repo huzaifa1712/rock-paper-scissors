@@ -87,6 +87,8 @@ function playRound(playerSelection, computerSelection, first=true, bMap = beatMa
 }
 
 
+
+
 function game(rounds){
     for(let i = 0; i < rounds; i++){
         let compChoice = computerPlay();
@@ -109,7 +111,7 @@ function game(rounds){
 // }
 
 //firstBeatsSecond
-let beatsTest= [firstBeatsSecond('Rock', 'Scissors', beatMap), // win 
+const beatsTest= [firstBeatsSecond('Rock', 'Scissors', beatMap), // win 
 firstBeatsSecond('Rock', 'Paper',beatMap), // lose
 
 firstBeatsSecond('Paper', 'Rock',beatMap), // win
@@ -124,7 +126,7 @@ firstBeatsSecond('papEr', 'PAper',beatMap) // tie
 // console.log(beatsTest);
 
 // playRound
-let playRoundTest = [
+const playRoundTest = [
     playRound("Rock", "Scissors"),
     playRound("Rock", "Paper"),
     playRound('Paper', 'Rock'),
@@ -139,7 +141,7 @@ Array(7) [ "You Win! Rock beats Scissors", "You Lose! Paper beats Rock ", "You W
 "You Win! Scissors beats Paper", "You Lose! Rock beats Scissors ", "You Tie! Paper does not beat Paper" ]
 */
 
-let playRoundTest2 = [
+const playRoundTest2 = [
     playRound("Rock", "Scissors", false),
     playRound("Rock", "Paper", false),
     playRound('Paper', 'Rock', false),

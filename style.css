@@ -27,6 +27,7 @@ button{
     font-size:1.5rem;
     padding: 0.2rem 4rem;
     transition: all 0.5s ease;
+    flex-basis:100%;
 }
 
 button:hover{
@@ -46,7 +47,7 @@ main{
 }
 
 #buttons{
-    width:100%;
+    max-width:100%;
     display:flex;
     justify-content:space-evenly;
     
@@ -56,14 +57,12 @@ main{
     width:75%;
     margin-top:1rem;
     text-align: center;
-    display:none;
 }
 
 #scores{
-    margin-top:-1rem;
     display:flex;
     justify-content:center;
-    font-size:1.25rem;
+    font-size:1.3rem;
     color:black;
 }
 
@@ -75,4 +74,10 @@ main{
     font-size:1.5rem;
 }
 
+#over-msg{
+    color:var(--loss);
+}
+.invisible{
+    display:none;
+}
 
